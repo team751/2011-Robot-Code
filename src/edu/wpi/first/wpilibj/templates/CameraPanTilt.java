@@ -3,7 +3,7 @@ import edu.wpi.first.wpilibj.Servo;
 
 /**
  * manages the camera pan/tilt bracket thing.
- * @author Sam
+ * @author Sam Crow
  */
 public class CameraPanTilt {
     Servo panServo;

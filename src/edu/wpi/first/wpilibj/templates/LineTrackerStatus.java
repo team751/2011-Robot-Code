@@ -2,7 +2,9 @@
 package edu.wpi.first.wpilibj.templates;
 
 /**
- * Holds an instant of line tracker status
+ * Holds an instance of line tracker status.
+ * This was intended for use in the new {@link LineTracker} class, which was
+ * not finished.
  */
 public class LineTrackerStatus {
     /**

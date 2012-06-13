@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.Timer;
  * When you set the target for the encoder-controlled PID loop, pass that target into setTarget.
  * Then, in your loop, call shouldMove to see if you should move the motor or if the encoder is not responding.
  * This assumes that the encoder will move more than 2 steps over 1 second in all normal conditions
+ * <br /><br />
+ * (This class is still in development. It has not been tested.)
  */
 public class EncoderWatchdog {
 

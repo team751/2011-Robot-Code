@@ -1,8 +1,8 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -12,7 +12,11 @@ public class SignalLED {
     private DigitalOutput output;
     private Timer timer;
     private DriverStation ds;
-    
+
+	/**
+	 * Constructor
+	 * @param LEDChannel The digital I/O channel that the LED is attached to
+	 */
     public SignalLED(int LEDChannel){
         output = new DigitalOutput(LEDChannel);
         timer = new Timer();
@@ -20,12 +24,21 @@ public class SignalLED {
 
         ds = DriverStation.getInstance();
     }
-    
+
+	/**
+	 * Set the LED to be on or off
+	 * @param on If the LED should be on
+	 */
     public void set(boolean on){
         output.set(on);
     }
 
-    public void loop(SimpleRobot robot){
+	/**
+	 * The main robot task thing should call this periodically so that the LED
+	 * will flash as expected.
+	 * @param robot The robot to get the autonomous/telop/disabled status of
+	 */
+    public void loop(RobotBase robot){
 
         if(robot.isDisabled()){
             double fraction = timer.get() % 1;

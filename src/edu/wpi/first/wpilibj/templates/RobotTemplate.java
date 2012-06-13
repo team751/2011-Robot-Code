@@ -6,20 +6,11 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.SimpleRobot;
-import edu.wpi.first.wpilibj.Watchdog;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.*;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.camera.AxisCamera;
-import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Relay.Value;
-import edu.wpi.first.wpilibj.DigitalModule;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.camera.AxisCameraException;
 import edu.wpi.first.wpilibj.image.*;
-import edu.wpi.first.wpilibj.Dashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -192,8 +183,6 @@ public class RobotTemplate extends SimpleRobot {
             //DriverStationLCD.getInstance().updateLCD();
             updateDashboard();
 
-            boolean followingLine = false;
-
             if(forkliftGripperStick.getRawButton(8)){
                 deploydelay = 0;
             }
@@ -206,7 +195,7 @@ public class RobotTemplate extends SimpleRobot {
 
             //check the line following status
             //button 2, when held down, enables line following
-            followingLine = rightDriveStick.getRawButton(1);
+            boolean followingLine = rightDriveStick.getRawButton(1);
             //now done checking if the robot should be following a line
             //now actually follow the line if it should
             if(followingLine){
@@ -214,7 +203,7 @@ public class RobotTemplate extends SimpleRobot {
             }
             else{
                 //use cheesy drive with regular joystick input
-                
+
                 double x = rightDriveStick.getX();
                 double y = rightDriveStick.getY();
                 if(rightDriveStick.getRawButton(3)){
@@ -352,8 +341,7 @@ public class RobotTemplate extends SimpleRobot {
     /**
      * Drive while following a line.
      * takes over steering
-     * @input motorPower How much power to apply to the motors to go forwards/backwards. Ratio -1-1 where 1 is full forward
-     * @input turnLeft If it's true, the robot will turn left at the fork. Otherwise, it'll turn right However, it currently doesn't work.
+	 * @param motorPower How much power to apply to the motors to go forwards/backwards. Ratio -1-1 where 1 is full forward
      */
     private void driveOnLine(double motorPower){
         double turnAmount = 0.8;//amount (0-1, 1=full) of turn to use when following lines

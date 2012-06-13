@@ -4,14 +4,16 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
- * Manages line tracking
+ * Manages line tracking. This was intended as a new, more intelligent way
+ * to follow a line. It is currently unfinished.
+ * @author Sam Crow
  */
 public class LineTracker {
-    
+
     DigitalInput leftLineSensor;
     DigitalInput midLineSensor;
     DigitalInput rightLineSensor;
-    
+
     /**
      * The number of tracker states to store in history
      */
@@ -99,14 +101,14 @@ public class LineTracker {
     public void stop(RobotDrive drive){
         drive.drive(0, 0);
     }
-    
+
     private static final int TURN_LEFT = -1;
     private static final int TURN_RIGHT = 1;
     private static final int NO_LINE_HISTORY = 0;
 
     /**
      * Find if the robot should turn left or right to get to the line, or if no line has been detected yet
-     * @return
+     * @return either {@link TURN_LEFT}, {@link TURN_RIGHT}, or {@link NO_LINE_HISTORY}.
      */
     private int turnDirection(){
         //iterate through the history

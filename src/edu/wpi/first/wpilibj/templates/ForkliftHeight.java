@@ -8,7 +8,6 @@ package edu.wpi.first.wpilibj.templates;
 public class ForkliftHeight {
     /**
      * Constructor
-     * @param inId The arbitrary identifier for this position. If you don't need this, just pass in 0.
      * @param inDegrees The number of degrees of (motor?) rotation from the lowest position to target
      */
     public ForkliftHeight(int inDegrees){

@@ -40,7 +40,6 @@ public class Gripper {
      * @param bottomEncoderA The Digital I/O channel for channel A of the encoder for the bottom motor
      * @param bottomEncoderB The Digital I/O channel for channel B of the encoder for the bottom motor
      * @param limitSwitchChannel The Digital I/O channel for the gripper limit switch
-     * @param signalLightChannel the Digital I/O channel for the signal light
      */
     public Gripper(int topJaguarChannel, int bottomJaguarChannel, int topEncoderA, int topEncoderB, int bottomEncoderA, int bottomEncoderB, int limitSwitchChannel){
         topMotor = new Jaguar(topJaguarChannel);
@@ -61,7 +60,7 @@ public class Gripper {
 
         ds = DriverStation.getInstance();
     }
-    
+
     /**
      * Handles periodic operations. Should be called periodically.
      */
@@ -119,7 +118,7 @@ public class Gripper {
             bottomMotor.set(-1);
         }
 
-                
+
     }
 
     /**
@@ -191,6 +190,6 @@ public class Gripper {
      * sends logging data to the dashboard
      */
     public void log(){
-       
+
     }
 }
