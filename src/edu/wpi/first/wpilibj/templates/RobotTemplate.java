@@ -26,7 +26,6 @@ public class RobotTemplate extends SimpleRobot {
     Joystick forkliftGripperStick;
     RobotDrive robotDrive;
 
-    AxisCamera cam;
     Timer timer;//general-purpose timer
     Timer teleopTimer;//tracks the time elapsed in the teleoperated period
     //new forklift class
@@ -95,10 +94,6 @@ public class RobotTemplate extends SimpleRobot {
      * Executed once after the robot powers on
      */
     public void robotInit() {
-        System.out.println("robotInit was called.");
-        cam = AxisCamera.getInstance();
-        cam.writeResolution(AxisCamera.ResolutionT.k640x480);
-        cam.writeBrightness(0);
     }
 
     /*
@@ -393,45 +388,6 @@ public class RobotTemplate extends SimpleRobot {
             //proceed with caution
             robotDrive.arcadeDrive(motorPower, 0.0, true);//go straight at half line speed
         }
-    }
-
-    private double getDistance(){
-        AxisCamera camera = AxisCamera.getInstance();
-        ColorImage colorImage = null;
-        try {
-            colorImage = camera.getImage();
-        } catch (AxisCameraException ex) {
-            ex.printStackTrace();
-        } catch (NIVisionException ex) {
-            ex.printStackTrace();
-        }
-        MonoImage monoImage = null;
-        try {
-            monoImage = colorImage.getIntensityPlane();
-        } catch (NIVisionException ex) {
-            ex.printStackTrace();
-        }
-        //at this point, we have the grayscale image from the intensity.
-        EllipseDescriptor descriptor = new EllipseDescriptor(5, 50, 5, 50);
-        EllipseMatch[] match = null;
-        try {
-            match = monoImage.detectEllipses(descriptor);
-        } catch (NIVisionException ex) {
-            ex.printStackTrace();
-        }
-        //Now we have an array of EllipseMatches
-        //debug: loop through the arrays
-        for(int i = 0; i < match.length; i++){
-            //output information about it
-            System.out.println("Detected an elipse. major radius: "+match[i].m_majorRadius
-                    +" minor radius: "+match[i].m_minorRadius
-                    +" rotation: "+match[i].m_rotation
-                    +" score: "+match[i].m_score
-                    +" xPos: "+match[i].m_xPos
-                    +" yPos: "+match[i].m_yPos);
-        }
-
-        return -1;
     }
 
     /**
