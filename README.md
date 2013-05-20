@@ -2,6 +2,8 @@
 
 This code controls Team 751's 2011 competition robot. It is based on the SimpleRobot template.
 
+The history of this repository is available at https://code.google.com/p/team751robotcode/
+
 This code started as one file containing all the robot logic.
 
 Over the season, the code became complicated as autonomous logic, closed-loop forklift control, and other features were added. Some of these features were separated into their own files.
